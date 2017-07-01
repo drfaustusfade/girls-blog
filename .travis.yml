@@ -1,23 +1,23 @@
 language: python
-
 python:
-  - 3.5.2
-
+- 3.5.2
 addons:
-  - postgresql: "9.5.7"
-
+- postgresql: 9.5.7
 before_install:
-  - export DJ_DEBUG=False
-  - export DATABASE_URL=postgres://postgres@localhost/travisdb
-
+- export DJ_DEBUG=False
+- export DATABASE_URL=postgres://postgres@localhost/travisdb
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 before_script:
-  - psql -c "CREATE DATABASE travisdb;" -U postgres
-  - python manage.py migrate --noinput
-
+- psql -c "CREATE DATABASE travisdb;" -U postgres
+- python manage.py migrate --noinput
 env:
-  - DJANGO=1.10.7
-
+- DJANGO=1.10.7
 script: python manage.py test --keepdb
+deploy:
+  provider: heroku
+  api_key:
+    secure: m2lLV2tK124dKnZPEv3p/LTt8AntvXlfhufKZy3bD7FfBR1652NteMB0rvgx+Qom5XkbdAT/iFEoECizzs73uN0ToJ2CAHBOdOhnyEe9IcdfIk9bnrIp4q8NNEIdU4aMPpyYA/rSWxCqDpr+pX2V1HS1FcTkARzAafo1Tq29mEP/9RGvXVPSpW1MQ7hCDFMX20zYBb48Y2viUQ8d91NucPHZ9yN01UY0XqvrLrIGw/8WDYlrpAbVhWWPTWM+9sNGzBYUcGCXBn0IZOSwvvkT7VaJ4ms0xfQ3+9jDvTbaIKu+jYu5Cccd4DmTTmNQyW0ChrNoRoJ7wk85j52+Voq87uv8lurRD1J/jyEXK16Fz9S+o8oaUkQtOr2F4OlCk3xc03YoRZ61gweHMQhdZgKY9R0qvbSLXaLmMrbj4is7hiZDKsx019QoVGRi+whJQ7YGLwWxKcJQ3chGMwzd0X/YnASkx8kcwWOziH7GL40M7nG0Z2G0z4wIt7oYozvo8+nrQYpcCF3LJ5cuZ2BhRWB95rovoKdGERH5qrksXxJ5vEJGhfKl1aHJmUhYXHK0cX90Hi6N6FjbhAYGVZ0xVXv5DHd4ZZ0O65A2uSFZoHBe/7qK+8rMIdUxZtTs0jHAsTWjZKQTmzjMkLAaN8S1L8YoqRiElFrpZxitddQv03YL3oM=
+  app: djangowithgirls
+  on:
+    repo: drfaustusfade/girls-blog
