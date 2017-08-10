@@ -49,12 +49,6 @@
                 "sourcePath": "pgdata"
             },
             "name": "Pgdata"
-        },
-        {
-            "host": {
-                "sourcePath": "."
-            },
-            "name": "_"
         }
     ]
 }
