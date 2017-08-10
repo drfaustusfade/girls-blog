@@ -1,0 +1,57 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "containerDefinitions": [
+        {
+            "essential": true,
+            "image": "postgres",
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/postgresql/data",
+                    "sourceVolume": "Pgdata"
+                }
+            ],
+            "name": "db"
+        },
+        {
+            "command": [
+                "bash",
+                "-c",
+                "python3 manage.py makemigrations &&\n         python3 manage.py migrate &&\n         gunicorn mysite.wsgi -b 0.0.0.0:8000",
+                "#",
+                "python3",
+                "manage.py",
+                "runserver",
+                "0.0.0.0:8000"
+            ],
+            "essential": true,
+            "mountPoints": [
+                {
+                    "containerPath": "/code",
+                    "sourceVolume": "_"
+                }
+            ],
+            "name": "web",
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "hostPort": 8000
+                }
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "pgdata"
+            },
+            "name": "Pgdata"
+        },
+        {
+            "host": {
+                "sourcePath": "."
+            },
+            "name": "_"
+        }
+    ]
+}
