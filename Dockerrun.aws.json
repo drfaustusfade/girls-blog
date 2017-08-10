@@ -27,12 +27,6 @@
                 "0.0.0.0:8000"
             ],
             "essential": true,
-            "mountPoints": [
-                {
-                    "containerPath": "/code",
-                    "sourceVolume": "_"
-                }
-            ],
             "name": "web",
             "portMappings": [
                 {
