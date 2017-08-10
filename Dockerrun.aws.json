@@ -13,6 +13,7 @@
             "name": "db"
         },
         {
+            "image": "drfaustusfade/testgirls",
             "command": [
                 "bash",
                 "-c",
