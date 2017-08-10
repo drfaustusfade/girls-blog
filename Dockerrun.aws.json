@@ -15,6 +15,9 @@
         },
         {
             "image": "drfaustusfade/testgirls",
+            "links": [
+              "db"
+            ],
             "memoryReservation": 256,
             "command": [
                 "bash",
@@ -31,7 +34,7 @@
             "portMappings": [
                 {
                     "containerPort": 8000,
-                    "hostPort": 8000
+                    "hostPort": 80
                 }
             ]
         }
