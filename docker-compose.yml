@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    restart: always
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  web:
+    restart: always
+    build: .
+    command: >
+              bash -c "python3 manage.py makemigrations &&
+                       python3 manage.py migrate &&
+                       gunicorn mysite.wsgi -b 0.0.0.0:8000"
+                      # python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
