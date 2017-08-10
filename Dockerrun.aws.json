@@ -4,6 +4,7 @@
         {
             "essential": true,
             "image": "postgres",
+            "MemoryReservation": 256,
             "mountPoints": [
                 {
                     "containerPath": "/var/lib/postgresql/data",
