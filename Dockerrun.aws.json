@@ -15,6 +15,7 @@
         },
         {
             "image": "drfaustusfade/testgirls",
+            "memoryReservation": 256,
             "command": [
                 "bash",
                 "-c",
