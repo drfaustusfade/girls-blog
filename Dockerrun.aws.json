@@ -11,7 +11,13 @@
                     "sourceVolume": "Pgdata"
                 }
             ],
-            "name": "db"
+            "name": "db",
+            "portMappings": [
+                {
+                    "containerPort": 5432,
+                    "hostPort": 5432
+                }
+            ]
         },
         {
             "image": "drfaustusfade/testgirls",
