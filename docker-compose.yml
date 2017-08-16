@@ -8,14 +8,14 @@ services:
       - pgdata:/var/lib/postgresql/data
   web:
     restart: always
-    build: .
+    image: drfaustusfade/testgirls,
     command: >
               bash -c "python3 manage.py makemigrations &&
                        python3 manage.py migrate &&
                        gunicorn mysite.wsgi -b 0.0.0.0:8000"
                       # python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - pgdata:/code
     ports:
       - "8000:8000"
     depends_on:
