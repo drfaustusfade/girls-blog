@@ -26,8 +26,6 @@
             ],
             "memoryReservation": 256,
             "command": [
-                "tail",
-                "-f",
                 "bash",
                 "-c",
                 "python3 manage.py makemigrations &&\n         python3 manage.py migrate &&\n         gunicorn mysite.wsgi -b 0.0.0.0:8000",
