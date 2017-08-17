@@ -21,11 +21,13 @@ services:
       - pgdata:/code
     ports:
       - "8000:8000"
-    #depends_on:
-    #  - db
+    depends_on:
+      - db
 
 volumes:
   pgdata:
+  
+  pgdata_aws:
     driver: "cloudstor:aws"
-    driver_opts: 
-      size: 1
+      driver_opts: 
+        size: 1
