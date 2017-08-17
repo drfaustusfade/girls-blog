@@ -5,7 +5,7 @@ services:
     restart: always
     image: postgres
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata_aws:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
@@ -25,7 +25,7 @@ services:
       - db
 
 volumes:
-  pgdata:
+  #pgdata:
   
   pgdata_aws:
     driver: "cloudstor:aws"
