@@ -25,9 +25,8 @@ services:
       - db
 
 volumes:
-  #pgdata:
-  
+  pgdata:  
   pgdata_aws:
     driver: "cloudstor:aws"
-      driver_opts: 
+    driver_opts: 
         size: 1
