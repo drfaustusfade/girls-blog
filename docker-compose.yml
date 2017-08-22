@@ -5,7 +5,7 @@ services:
     restart: always
     image: postgres
     volumes:
-      - pgdata_aws:/var/lib/postgresql/data
+      - pgdata_ebs:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
@@ -17,16 +17,16 @@ services:
                        python3 manage.py migrate &&
                        gunicorn mysite.wsgi -b 0.0.0.0:8000"
                       # python3 manage.py runserver 0.0.0.0:8000
-    volumes:
-      - pgdata:/code
+    #volumes:
+    #  - pgdata:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
 
 volumes:
-  pgdata:  
-  pgdata_aws:
+  # pgdata:  
+  pgdata_ebs:
     driver: "cloudstor:aws"
     driver_opts: 
         size: 1
