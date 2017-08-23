@@ -4,6 +4,14 @@ services:
   db:
     restart: always
     image: postgres
+    environment:
+      - POSTGRES_USER:'foo'
+      - POSTGRES_PASSWORD:'foobar'
+      - POSTGRES_DB:'baz'
+    
+    # env_file:
+    #- web-variables.env
+    
     volumes:
       - pgdata_ebs:/var/lib/postgresql/data
     ports:
