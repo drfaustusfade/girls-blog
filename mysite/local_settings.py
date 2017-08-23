@@ -21,4 +21,15 @@ DATABASES = {
 #     }
 # }
 
+DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'baz',
+    'USER': 'foo',
+    'PASSWORD': 'foobar'
+    'HOST': 'db',
+    'PORT': '5432',
+    }
+}
+
 DEBUG = True
